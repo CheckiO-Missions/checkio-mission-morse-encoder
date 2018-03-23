@@ -1,0 +1,18 @@
+"use strict";
+
+function morseEncoder(text) {
+    // your code here
+    return text;
+}
+
+var assert = require('assert');
+if (!global.is_checking) {
+    console.log('Example:')
+    console.log(morseEncoder('some text'))
+
+    // These "asserts" are used for self-checking and not for an auto-testing
+    assert.equal(morseEncoder("some text"), "... --- -- .   - . -..- -")
+    assert.equal(morseEncoder("2018"), "..--- ----- .---- ---..")
+    assert.equal(morseEncoder("It was a good day", 16), ".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--")
+    console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}
