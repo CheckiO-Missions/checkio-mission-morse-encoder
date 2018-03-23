@@ -13,6 +13,6 @@ if (!global.is_checking) {
     // These "asserts" are used for self-checking and not for an auto-testing
     assert.equal(morseEncoder("some text"), "... --- -- .   - . -..- -")
     assert.equal(morseEncoder("2018"), "..--- ----- .---- ---..")
-    assert.equal(morseEncoder("It was a good day", 16), ".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--")
+    assert.equal(morseEncoder("It was a good day"), ".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--")
     console.log("Coding complete? Click 'Check' to earn cool rewards!");
 }
