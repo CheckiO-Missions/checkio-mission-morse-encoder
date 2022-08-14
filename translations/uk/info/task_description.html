@@ -1,0 +1,44 @@
+<!-- Describe task in general -->
+
+<p>
+    Твоє завдання - зашифрувати повідомлення, використовуючи <a href='https://en.wikipedia.org/wiki/Morse_code'>азбуку Морзе</a>.
+    Вхідний текст може містити великі і малі літери, цифри і пробіли.
+    Не буде жодних спеціальних символів ('&', '?', '#' etc.)<br>
+    В зашифрованому повідомленні має бути по 3 пробіли між словами і по 1 пробілу між літерами в слові.
+</p>
+
+<p style="text-align: center;">
+    <img  title="Morse encoder" src="{{MEDIA}}example.jpg" alt="example" style="max-height: 283px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Вхідні дані:</strong> Повідомлення, тип даних - рядок.
+</p>
+
+<p>
+    <strong>Вихідні дані:</strong> Зашифроване повідомлення, тип даних - рядок.
+</p>
+
+
+<!-- Put some usage examples -->
+<div class="for_info_only">
+<p>
+<strong>Приклади:</strong>
+</p>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<!-- Here you can explain how it can be used in development and what is usage of this. -->
+<!-- The section is optional -->
+<p class="for_info_only">
+    <strong>Як це використовується: </strong>
+    У криптографії та роботі шпигунів.
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p><strong>Передумови:</strong><br>
+    0 < len(text) < 50<br>
+    Тільки великі і малі літери латиниці, цифри і пробіли.
+</p>
