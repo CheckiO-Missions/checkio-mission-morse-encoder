@@ -16,8 +16,8 @@
     <div class="answer">
         Since all letter in MORSE are lowercase, you should make your
         text lowercase as well. Do it with <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">lower()</a> string method:
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 text = "Hello"
 text.lower()
@@ -32,8 +32,8 @@ text.lower()
     <div class="answer">
         Then you should create <a target="_blank" href="https://wiki.python.org/moin/Generators">generator expression</a>
         to perform an operation with each character in modified text: 
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 (... for c in text.lower())
         </pre>
@@ -50,8 +50,8 @@ text.lower()
         you want to receive value (combination of characters) for "c" key. The
         second parameter (default value in case of key absence in dictionary)
         use whitespace. Its a tricky moment I explain you next step.
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 (MORSE.get(c, ' ') for c in text.lower())
         </pre>
@@ -66,8 +66,8 @@ text.lower()
         for some function. MORSE keys and values are strings, so you need no
         additional transformation. You may use string method <a target="_blank" href="https://www.w3schools.com/python/ref_string_join.asp">join()</a>
         to merge all characters into one string.
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 <i>separator</i>.join(MORSE.get(c, ' ') for c in text.lower())
         </pre>
@@ -88,8 +88,8 @@ text.lower()
         all characters. So 1 whitespace separator + 1 whitespace as "character" +
         again 1 whitespace separator gives you desirable 3 whitespaces as a separator
         between words in final string! 
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 " ".join(MORSE.get(c, ' ') for c in text.lower())
         </pre>
@@ -101,8 +101,8 @@ text.lower()
     </div>
     <div class="answer">
         Actually, that almost all. You just need to add function definition:
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 def morse_encoder(text: str) -> str:
 
@@ -112,8 +112,8 @@ def morse_encoder(text: str) -> str:
         There are more you be able to see after your code successfully passes
         all tests. For example:
         you can make this solution even more compact...
-        <br>
-        <br>
+        <br />
+        <br />
         <pre class="brush: python">
 morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ') for c in text.lower())
         </pre>
@@ -121,8 +121,8 @@ morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ') for c in text.lower())
         are no need of default whitespace value inside get()). Besides you
         may use map() function which implement some function to each element
         of Iterable)
-        <br>
-        <br>
+        <br />
+        <br />
         <pre class="brush: python">
 morse_encoder = lambda text: ' '.join(map(MORSE.get, text.lower()))
         </pre>
@@ -130,8 +130,8 @@ morse_encoder = lambda text: ' '.join(map(MORSE.get, text.lower()))
         first, then taking characters from MORSE for each letter in a word, 
         joining them in a new word with 1 whitespace separator, and finally
         joining all new words with 3 whitespaces.
-        <br>
-        <br>
+        <br />
+        <br />
         <pre class="brush: python">
 def morse_encoder(text: str) -> str:
 
