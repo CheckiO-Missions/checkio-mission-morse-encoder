@@ -1,6 +1,17 @@
-requirejs(['ext_editor_io2', 'jquery_190'],
+//Dont change it
+//Dont change it
+requirejs(['ext_editor_io', 'jquery_190'],
     function (extIO, $) {
-        var io = new extIO({});
+        
+        var $tryit;
+
+        var io = new extIO({
+            multipleArguments: false,
+            functions: {
+                python: 'morse_encoder',
+                js: 'morseEncoder'
+            }
+        });
         io.start();
     }
 );

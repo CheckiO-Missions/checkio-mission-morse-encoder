@@ -24,7 +24,17 @@
 <p>
 <strong>Примеры:</strong>
 </p>
-<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+{% if interpreter.slug == "js-node" %}
+<pre class="brush: javascript">morseEncoder("some text") == "... --- -- .   - . -..- -"
+morseEncoder("2018") == "..--- ----- .---- ---.."
+morseEncoder("It was a good day") == ".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--"
+</pre>
+{% else %}
+<pre class="brush: python">morse_encoder("some text") == "... --- -- .   - . -..- -"
+morse_encoder("2018") == "..--- ----- .---- ---.."
+morse_encoder("It was a good day") == ".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--"
+</pre>
+{% endif %}
 </div>
 
 <!-- Here you can explain how it can be used in development and what is usage of this. -->
