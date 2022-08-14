@@ -1,0 +1,160 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Я уявлення не маю, як розв'язати цю місію.
+    </div>
+    <div class="answer">
+        У розв'язку, який я хочу тобі показати, тобі потрібно рухатися по рядку 
+        і для кожного символа з вхідного рядка брати відповідну комбінацію
+        символів з словника MORSE. 
+        Тоді об'єднати всі ці нові комбінації разом і повернути результат.       
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        З якого інструменту мені слід почати?
+    </div
+    <div class="answer">
+        Оскільки всі літери в MORSE маленькі, тобі слід зробити свій вхідний
+        також лише з маленьких літер. Зроби це з рядковим методом <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">lower()</a>:
+<br>
+<br>
+        <pre class="brush: python">
+text = "Hello"
+text.lower()
+>>> "hello"
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Цей крок зрозумілий, але я застряг із наступним і потребую підказки.
+    </div>
+    <div class="answer">
+        Далі тобі слід створити <a target="_blank" href="https://wiki.python.org/moin/Generators">вираз генератор</a>,
+        щоб проводити операції із кожним символом зміненого тексту: 
+<br>
+<br>
+        <pre class="brush: python">
+(... for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Добре, але я не розумію, що це за операції такі мають бути.
+    </div>
+    <div class="answer">
+        Оскільки MORSE це <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries.asp">словник</a>,
+        використай його метод <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries_access.asp">get()</a>
+        з двома параметрами. Перший це "c" з виразу генератора, оскільки ти хочеш
+        отримати значення (комбінацію символів) для "c" ключа. Для другого параметру
+        (значення за замовчування у випадку відсутності ключа в словнику)
+        використай пробіл. Це цікавий момент, який я поясню тобі згодом.
+<br>
+<br>
+        <pre class="brush: python">
+(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Отже, я маю генераторний вираз, але ж мені потрібен рядок! Допоможи його
+        отримати.
+    </div>
+    <div class="answer">
+        Генераторний вираз це ітеративний об'єкт і зазичай служить параметром
+        для якоїсь функції. Ключі і значення MORSE мають тип - рядок, тому тобі не
+        потрібні ніякі додаткові перетворення. Ти можеш використати метод
+        рядків <a target="_blank" href="https://www.w3schools.com/python/ref_string_join.asp">join()</a>,
+        щоб об'єднати всі символи в один рядок.
+<br>
+<br>
+        <pre class="brush: python">
+<i>separator</i>.join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Як мені отримати потрібні проміжки між словами і символами в кінцевому
+        рядку?
+    </div>
+    <div class="answer">
+        Тобі потрібно мати 3 пробіли між словами та 1 пробіл між
+        символами в слові.Тому використовуйте 1 пробіл (" ") як роздільник, він
+        дасть тобі один пробіл між усіма символами. І ось хитрість, яку я тобі
+        обіцяв. У оригінальному тексті роздільник між словами - 1 пробіл.
+        Оскільки в MORSE такого ключа немає, він натомість бере значення за
+        замовчуванням - 1 пробіл. У своєму кінцевому рядку ти використовує
+        1 пробіл як роздільник між всіма символами. Отже, пробіл + пробіл як
+        "символ" + знову 1 пробіл дає тобі бажані 3 пробіли як роздільник між
+        словами в кінцевому рядку!
+<br>
+<br>
+        <pre class="brush: python">
+" ".join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Оце круто! Але як же має виглядати мій остаточний розв'язок?
+    </div>
+    <div class="answer">
+        Взагалі то це майже все. Тобі лише потрібно додати визначення функції:
+<br>
+<br>
+        <pre class="brush: python">
+def morse_encoder(text: str) -> str:
+
+    return ' '.join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+        Цей розв'язок чудовий, але не єдиний шлях вирішення цієї місії.
+        Це більше, які ти зможеш побачити після того, як твій код успішно пройде
+        всі тести. Наприклад:
+        ти можеш зробити свій розв'язок ще компактнішим...
+        <br>
+        <br>
+        <pre class="brush: python">
+morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+        (якщо ти попередньо додав пару пробілів як ключ-значення до MORSE, тоді
+        тобі не потрібен пробіл як значення за замовчуванням всередині get()). 
+        Крім того, ти можеш використати функцію map(), що застосовує певну
+        функцію до кожного елемента ітеративного об'єкта)
+        <br>
+        <br>
+        <pre class="brush: python">
+morse_encoder = lambda text: ' '.join(map(MORSE.get, text.lower()))
+        </pre>
+        ...або більшим з додатковою функцією, поділом вхідного рядка на слова
+        спочатку, потім отриманням символів з MORSE для кожної літери зі слова, 
+        об'єднанням їх у нове слово з 1 пробілом як роздільником, і нарешті
+        об'єднання усіх нових слів через 3 пробіли в рядок.
+        <br>
+        <br>
+        <pre class="brush: python">
+def morse_encoder(text: str) -> str:
+
+    def trans(word):
+        
+        return ' '.join(map(lambda char: MORSE[char], word))
+
+    words = text.lower().split()
+    text1 = '   '.join(map(trans, words))
+
+    return text1
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Дякую! Тепер я знаю і розумію більше! Все працює як слід!
+    </div>
+    <div class="answer">
+        Приємно це чути!
+    </div>
+</div>
+</body>

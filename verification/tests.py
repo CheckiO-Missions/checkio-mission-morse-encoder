@@ -11,25 +11,25 @@ Each test is a dict with
 TESTS = {
     "Basics": [
         {
-            "input": "some text",
+            "input": ["some text"],
             "answer": "... --- -- .   - . -..- -"
         },
         {
-            "input": "I was born in 1990",
+            "input": ["I was born in 1990"],
             "answer": "..   .-- .- ...   -... --- .-. -.   .. -.   .---- ----. ----. -----"
         }
     ],
     "Extra": [
         {
-            "input": "abcdefghijklmnopqrstuvwxyz",
+            "input": ["abcdefghijklmnopqrstuvwxyz"],
             "answer": ".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.."
         },
         {
-            "input": "0123456789 are digits",
+            "input": ["0123456789 are digits"],
             "answer": "----- .---- ..--- ...-- ....- ..... -.... --... ---.. ----.   .- .-. .   -.. .. --. .. - ..."
         },
 	{
-            "input": "v3ry 10ng str1ng w1th s0m3 numb3r5",
+            "input": ["v3ry 10ng str1ng w1th s0m3 numb3r5"],
             "answer": "...- ...-- .-. -.--   .---- ----- -. --.   ... - .-. .---- -. --.   .-- .---- - ....   ... ----- -- ...--   -. ..- -- -... ...-- .-. ....."
         }
     ]
