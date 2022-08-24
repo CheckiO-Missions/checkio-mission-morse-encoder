@@ -13,12 +13,12 @@
 <div class="question-answer">
     <div class="question">
         З якого інструменту мені слід почати?
-    </div
+    </div>
     <div class="answer">
         Оскільки всі літери в MORSE маленькі, тобі слід зробити свій вхідний
         також лише з маленьких літер. Зроби це з рядковим методом <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">lower()</a>:
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 text = "Hello"
 text.lower()
@@ -33,8 +33,8 @@ text.lower()
     <div class="answer">
         Далі тобі слід створити <a target="_blank" href="https://wiki.python.org/moin/Generators">вираз генератор</a>,
         щоб проводити операції із кожним символом зміненого тексту: 
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 (... for c in text.lower())
         </pre>
@@ -51,8 +51,8 @@ text.lower()
         отримати значення (комбінацію символів) для "c" ключа. Для другого параметру
         (значення за замовчування у випадку відсутності ключа в словнику)
         використай пробіл. Це цікавий момент, який я поясню тобі згодом.
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 (MORSE.get(c, ' ') for c in text.lower())
         </pre>
@@ -69,10 +69,10 @@ text.lower()
         потрібні ніякі додаткові перетворення. Ти можеш використати метод
         рядків <a target="_blank" href="https://www.w3schools.com/python/ref_string_join.asp">join()</a>,
         щоб об'єднати всі символи в один рядок.
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
-<i>separator</i>.join(MORSE.get(c, ' ') for c in text.lower())
+separator.join(MORSE.get(c, ' ') for c in text.lower())
         </pre>
     </div>
 </div>
@@ -91,8 +91,8 @@ text.lower()
         1 пробіл як роздільник між всіма символами. Отже, пробіл + пробіл як
         "символ" + знову 1 пробіл дає тобі бажані 3 пробіли як роздільник між
         словами в кінцевому рядку!
-<br>
-<br>
+<br />
+<br />
         <pre class="brush: python">
 " ".join(MORSE.get(c, ' ') for c in text.lower())
         </pre>
