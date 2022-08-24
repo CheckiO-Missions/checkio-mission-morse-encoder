@@ -120,7 +120,8 @@ def morse_encoder(text: str) -> str:
     <br />
     <br />
         <pre class="brush: python">
-morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ') for c in text.lower())        
+morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ')
+                                      for c in text.lower())        
         </pre>
         The hints solution is brilliant, but you can make it even more compact, 
         using lambda expression.
@@ -151,6 +152,10 @@ def morse_encoder(text: str) -> str:
         first, then taking characters from MORSE for each letter in a word, 
         joining them in a new word with 1 whitespace separator, and finally
         joining all new words with 3 whitespaces.
+        <br />
+        <br />
+        Click on "Best solutions" at mission menu and you find much more
+        solutions for this mission!
     </div>
 </div>
 <div class="question-answer">
