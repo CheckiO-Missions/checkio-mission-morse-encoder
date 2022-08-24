@@ -104,37 +104,40 @@ text.lower()
     </div>
     <div class="answer">
         Взагалі то це майже все. Тобі лише потрібно додати визначення функції:
-<br>
-<br>
+        <br />
+        <br />
         <pre class="brush: python">
 def morse_encoder(text: str) -> str:
 
     return ' '.join(MORSE.get(c, ' ') for c in text.lower())
         </pre>
-        Цей розв'язок чудовий, але не єдиний шлях вирішення цієї місії.
-        Це більше, які ти зможеш побачити після того, як твій код успішно пройде
-        всі тести. Наприклад:
-        ти можеш зробити свій розв'язок ще компактнішим...
-        <br>
-        <br>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Покажи мені більше розв'язків!<br />
+        Адже я хочу стати справжнім Python Нінндзяя!
+    </div>
+    <div class="answer">
+        Звісно, тримай!
+    <br />
+    <br />
         <pre class="brush: python">
-morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ') for c in text.lower())
+morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ') for c in text.lower())        
         </pre>
-        (якщо ти попередньо додав пару пробілів як ключ-значення до MORSE, тоді
+        Розв'язок, який ми склали, чудовий, але його можна зробити ще компактнішим:
+        <br />
+        <br />
+        <pre class="brush: python">
+morse_encoder = lambda text: ' '.join(map(MORSE.get, text.lower()))    
+        </pre>  
+        Якщо ти попередньо додав пару пробілів як ключ-значення до MORSE, тоді
         тобі не потрібен пробіл як значення за замовчуванням всередині get()). 
         Крім того, ти можеш використати функцію map(), що застосовує певну
-        функцію до кожного елемента ітеративного об'єкта)
+        функцію до кожного елемента ітеративного об'єкта.
         <br>
-        <br>
-        <pre class="brush: python">
-morse_encoder = lambda text: ' '.join(map(MORSE.get, text.lower()))
-        </pre>
-        ...або більшим з додатковою функцією, поділом вхідного рядка на слова
-        спочатку, потім отриманням символів з MORSE для кожної літери зі слова, 
-        об'єднанням їх у нове слово з 1 пробілом як роздільником, і нарешті
-        об'єднання усіх нових слів через 3 пробіли в рядок.
-        <br>
-        <br>
+        <br />
+        <br />
         <pre class="brush: python">
 def morse_encoder(text: str) -> str:
 
@@ -145,8 +148,12 @@ def morse_encoder(text: str) -> str:
     words = text.lower().split()
     text1 = '   '.join(map(trans, words))
 
-    return text1
+    return text1    
         </pre>
+        Більший розв'язок з додатковою функцією, поділом вхідного рядка на слова
+        спочатку, потім отриманням символів з MORSE для кожної літери зі слова, 
+        об'єднанням їх у нове слово з 1 пробілом як роздільником, і нарешті
+        об'єднання усіх нових слів через 3 пробіли в рядок.
     </div>
 </div>
 <div class="question-answer">
