@@ -1,0 +1,44 @@
+<!-- Describe task in general -->
+
+<p>
+    Państwa zadaniem jest zaszyfrowanie wiadomości tekstowej przy użyciu adresu <a target="_blank" href='https://en.wikipedia.org/wiki/Morse_code'>Morse code</a>. Tekst wejściowy będzie składał się z liter (wielkich i małych), cyfr i białych spacji. Nie będzie żadnych znaków specjalnych ('&amp;', '?', '#' itp.)<br>
+    Proszę używać 3 spacji między słowami i 1 spacji między każdą literą każdego słowa.
+</p>
+
+<p style="text-align: center;">
+    <img  title="Morse encoder" src="{{MEDIA}}example.jpg" alt="example" style="max-height: 283px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Dane wejściowe:</strong> Tajna wiadomość <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Wyjście:</strong> Ta sama wiadomość <span>(str{% if is_js %}ing{% endif %})</span>ale zaszyfrowana.
+</p>
+
+
+<!-- Put some usage examples -->
+<div class="for_info_only">
+<p>
+<strong>Przykłady:</strong>
+</p>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<!-- Here you can explain how it can be used in development and what is usage of this. -->
+<!-- The section is optional -->
+<p class="for_info_only">
+   <strong>Jak jest używany:</strong>
+    Do kryptografii i pracy szpiegowskiej.
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p><strong>Warunki wstępne:</strong>
+    <ul>
+        <li>0 &lt; len(text) &lt; 50;</li>
+        <li>Tylko angielskie litery (wielkie i małe), cyfry i białe spacje.</li>
+    </ul>
+</p>
