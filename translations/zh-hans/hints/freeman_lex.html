@@ -1,0 +1,156 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这项任务。
+    </div>
+    <div class="answer">
+        <p>
+            给你个建议💡！在我想告诉你的解决方案中，你应该移动字符串，并从MORSE字典中为每个字符提取等价的字符组合。然后将所有这些组合连接起来并返回。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        我应该从什么工具开始？
+    </div>
+    <div class="answer">
+        <p>
+            由于MORSE中的所有字母都是小写字母，因此您应该将您的
+        文本也应小写。请使用<a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">lower()</a> string 方法：
+        </p>
+        <pre class="brush: python">
+text = "Hello"
+print(text.lower())
+        </pre>
+        <div class="output">
+            <p>输出：</p>
+            <pre>"hello"</pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        这一步很清楚，但是下一步我卡住了，需要提示。
+    </div>
+    <div class="answer">
+        <p>
+            然后您应该创建<a target="_blank" href="https://wiki.python.org/moin/Generators">generator expression</a> ，对修改文本中的每个字符执行操作： 
+        </p>        
+        <pre class="brush: python">
+(... for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好的，但我不明白应该是什么操作。
+    </div>
+    <div class="answer">
+        <p>
+            因为MORSE是一个<a target="_blank" href="https://www.w3schools.com/python/python_dictionaries.asp">dictionary</a> ，所以使用带有两个参数的<a target="_blank" href="https://www.w3schools.com/python/python_dictionaries_access.asp">get()</a> 方法。第一个参数是生成器表达式中的 "c"，因为您希望接收 "c "键的值（字符组合）。第二个参数（在字典中没有键的情况下的默认值）使用空格。这是一个棘手的问题，我将在下一步向您解释。
+        </p>
+        <pre class="brush: python">
+(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        我有生成器表达式，但我需要字符串。请帮助我！
+    </div>
+    <div class="answer">
+        <p>
+            生成器表达式是一个迭代器，通常作为某个函数的参数。MORSE的键和值都是字符串，因此不需要额外的转换。您可以使用字符串方法<a target="_blank" href="https://www.w3schools.com/python/ref_string_join.asp">join()</a> 将所有字符合并为一个字符串。
+        </p>
+        <pre class="brush: python">
+separator.join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何在最终字符串中的单词和字符之间获得所需的空格？
+        字符串？
+    </div>
+    <div class="answer">
+        <p>
+            单词之间需要3个空格，单词中的字符之间需要1个空格。因此，使用1个空格（" "）作为分隔符，这样所有字符之间都有1个空格。这就是我向您承诺的技巧。在原文中，单词分隔符是1个空格。因为在MORSE中没有这样的键，所以它使用默认值--1个空格。在您的最终字符串中，您使用1个空格作为所有字符之间的分隔符。因此，1个空格分隔符+1个空格作为 "字符 "+再加1个空格分隔符，在最终字符串中，您需要3个空格作为单词之间的分隔符！ 
+        </p>
+        <pre class="brush: python">
+" ".join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        这很酷！但是最终的解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            事实上，这几乎是全部。您只需添加函数定义：
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def morse_encoder(text: str) -> str:
+
+    return ' '.join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        告诉我更多的解决方案！<br />
+        因为我想成为一个真正的 Python 🥇 Ninnjaa！
+    </div>
+    <div class="answer">
+        <p>当然，抓住它！</p>
+        <p>
+            提示的解决方案很好，但你可以使用 lambda 表达式使它更紧凑。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ')
+                                      for c in text.lower())        
+        </pre>
+        </div>
+        <p>
+            如果你之前在MORSE中添加了空白键值对，你就不需要在get()中使用默认的空白值。此外，你还可以使用map()函数，它为Iterable的每个元素实现一些函数。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+morse_encoder = lambda text: ' '.join(map(MORSE.get, text.lower()))    
+        </pre>
+        </div>
+        <p>
+            更大的迭代器带有附加函数，首先按单词分割输入文本，然后从MORSE中获取单词中每个字母的字符，用1个空格分隔符将它们连接到一个新单词中，最后用3个空格连接所有新单词。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def morse_encoder(text: str) -> str:
+
+    def trans(word):
+        
+        return ' '.join(map(lambda char: MORSE[char], word))
+
+    words = text.lower().split()
+    text1 = '   '.join(map(trans, words))
+
+    return text1    
+        </pre>
+        </div>
+        <p>
+            点击任务菜单中的<b>Best solutions</b> ，您可以找到更多的
+        的解决方案！
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解了更多！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息👍！
+    </div>
+</div>
+</body>

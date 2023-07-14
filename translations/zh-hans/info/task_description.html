@@ -1,0 +1,44 @@
+<!-- Describe task in general -->
+
+<p>
+    您的任务是使用<a target="_blank" href='https://en.wikipedia.org/wiki/Morse_code'>Morse code</a> 对文本信息进行加密。输入文本将由字母（大写和小写）、数字和空格组成。没有任何特殊字符（'&amp;'、'?'、'#'等）。<br>
+    单词之间需要使用3个空格，每个单词的每个字母之间使用1个空格。
+</p>
+
+<p style="text-align: center;">
+    <img  title="Morse encoder" src="{{MEDIA}}example.jpg" alt="example" style="max-height: 283px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>输入：</strong>密文 <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>输出：</strong>相同的信息 <span>(str{% if is_js %}ing{% endif %})</span>但已加密。
+</p>
+
+
+<!-- Put some usage examples -->
+<div class="for_info_only">
+<p>
+<strong>举例说明</strong>
+</p>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<!-- Here you can explain how it can be used in development and what is usage of this. -->
+<!-- The section is optional -->
+<p class="for_info_only">
+   <strong>如何使用：</strong>
+    用于密码学和间谍工作。
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p><strong>前提条件</strong>
+    <ul>
+        <li>0 &lt; len(text) &lt; 50；</li>
+        <li>只能输入英文字母（大写和小写）、数字和空格。</li>
+    </ul>
+</p>
