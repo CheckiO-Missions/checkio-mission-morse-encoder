@@ -9,8 +9,8 @@ api.add_listener(
     CheckiOReferee(
         tests=TESTS,
         function_name={
-            "python": "morse_encoder", # check function name!
-            "js": "morseEncoder"      # check function name!
+            "python": "morse_encoder",
+            "js": "morseEncoder"
         },
         cover_code={
             'python-3': {},
