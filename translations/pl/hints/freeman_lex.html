@@ -1,0 +1,156 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę wpaść na jakiś pomysł 💡! W rozwiązaniu, które chcę Państwu pokazać, należy przejść nad ciągiem znaków i pobrać równoważną kombinację znaków ze słownika MORSE dla każdego znaku. Następnie proszę połączyć wszystkie te kombinacje i zwrócić wynik.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Od jakiego instrumentu powinienem zacząć?
+    </div>
+    <div class="answer">
+        <p>
+            Ponieważ wszystkie litery w MORSE są małe, powinien Pan również
+        również małymi literami. Proszę to zrobić za pomocą metody <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">lower()</a> string:
+        </p>
+        <pre class="brush: python">
+text = "Hello"
+print(text.lower())
+        </pre>
+        <div class="output">
+            <p>Wyjście:</p>
+            <pre>"hello"</pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ten krok jest jasny, ale utknąłem z następnym i potrzebuję podpowiedzi.
+    </div>
+    <div class="answer">
+        <p>
+            Następnie należy utworzyć <a target="_blank" href="https://wiki.python.org/moin/Generators">generator expression</a>, aby wykonać operację na każdym znaku w zmodyfikowanym tekście: 
+        </p>        
+        <pre class="brush: python">
+(... for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, ale nie rozumiem jaka to powinna być operacja.
+    </div>
+    <div class="answer">
+        <p>
+            Ponieważ MORSE to <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries.asp">dictionary</a>, proszę użyć jego metody <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries_access.asp">get()</a> z dwoma parametrami. Pierwszym jest "c" z wyrażenia generatora, ponieważ chce Pan otrzymać wartość (kombinację znaków) dla klucza "c". Drugi parametr (wartość domyślna w przypadku braku klucza w słowniku) używa białych znaków. To trudny moment, który wyjaśnię Państwu w następnym kroku.
+        </p>
+        <pre class="brush: python">
+(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Mam wyrażenie generatora, ale potrzebuję ciągu znaków. Proszę pomóc mi go uzyskać!
+    </div>
+    <div class="answer">
+        <p>
+            Wyrażenie generatora jest Iterable i zwykle służy jako parametr dla jakiejś funkcji. Klucze i wartości MORSE są ciągami znaków, więc nie trzeba ich dodatkowo przekształcać. Można użyć metody string <a target="_blank" href="https://www.w3schools.com/python/ref_string_join.asp">join()</a>, aby połączyć wszystkie znaki w jeden ciąg.
+        </p>
+        <pre class="brush: python">
+separator.join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak powinienem uzyskać potrzebne odstępy między słowami i znakami w końcowym
+        string?
+    </div>
+    <div class="answer">
+        <p>
+            Musi Pan mieć 3 spacje między słowami i 1 spację między znakami w słowie. Proszę więc użyć 1 białej spacji (" ") jako separatora, co da jedną białą spację między wszystkimi znakami. A oto sztuczka, którą Państwu obiecałem. W oryginalnym tekście separatorem słów jest 1 biały znak. Ponieważ w MORSE nie ma takiego klucza, przyjmuje on wartość domyślną - 1 biały znak. W końcowym ciągu użyje Pan 1 białego znaku jako separatora między wszystkimi znakami. Tak więc 1 biały separator + 1 biały separator jako "znak" + ponownie 1 biały separator daje pożądane 3 białe spacje jako separator między słowami w końcowym ciągu! 
+        </p>
+        <pre class="brush: python">
+" ".join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        To jest fajne! Ale jak powinno wyglądać ostateczne rozwiązanie?
+    </div>
+    <div class="answer">
+        <p>
+            Właściwie to prawie wszystko. Proszę tylko dodać definicję funkcji:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def morse_encoder(text: str) -> str:
+
+    return ' '.join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwym Pythonem 🥇 Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę łapać!</p>
+        <p>
+            Rozwiązanie z podpowiedziami jest genialne, ale można uczynić je jeszcze bardziej kompaktowym, używając wyrażenia lambda.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ')
+                                      for c in text.lower())        
+        </pre>
+        </div>
+        <p>
+            Jeśli wcześniej dodali Państwo parę klucz-wartość z białymi znakami do MORSE, nie będą Państwo potrzebować domyślnej wartości białych znaków wewnątrz get(). Poza tym można użyć funkcji map(), która implementuje jakąś funkcję do każdego elementu Iterable
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+morse_encoder = lambda text: ' '.join(map(MORSE.get, text.lower()))    
+        </pre>
+        </div>
+        <p>
+            Większy z dodatkową funkcją, najpierw dzieli tekst wejściowy na słowa, następnie pobiera znaki z MORSE dla każdej litery w słowie, łączy je w nowe słowo z 1 separatorem białych znaków, a na koniec łączy wszystkie nowe słowa z 3 białymi spacjami.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def morse_encoder(text: str) -> str:
+
+    def trans(word):
+        
+        return ' '.join(map(lambda char: MORSE[char], word))
+
+    words = text.lower().split()
+    text1 = '   '.join(map(trans, words))
+
+    return text1    
+        </pre>
+        </div>
+        <p>
+            Proszę kliknąć na <b>Best solutions</b> w menu misji, a znajdą Państwo więcej
+        rozwiązań dla tej misji!
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+    </div>
+    <div class="answer">
+        Miło mi to słyszeć 👍!
+    </div>
+</div>
+</body>
