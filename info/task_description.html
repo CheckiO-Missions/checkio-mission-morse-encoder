@@ -1,9 +1,7 @@
 <!-- Describe task in general -->
 
 <p>
-    Your task is to encrypt the text message using the <a href='https://en.wikipedia.org/wiki/Morse_code'>Morse code</a>.
-    The input text will consist of letters (in uppercase and lowercase), numbers and whitespaces.
-    There won't be any special characters ('&', '?', '#' etc.)<br>
+    Your task is to encrypt the text message using the <a target="_blank" href='https://en.wikipedia.org/wiki/Morse_code'>Morse code</a>. The input text will consist of letters (in uppercase and lowercase), numbers and white spaces. There won't be any special characters ('&', '?', '#' etc.)<br>
     You need to use 3 spaces between words and 1 space between each letter of each word.
 </p>
 
@@ -13,18 +11,18 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> The secret message as a string.
+    <strong>Input:</strong> The secret message <span translate="no">(str{% if is_js %}ing{% endif %})</span>.
 </p>
 
 <p>
-    <strong>Output: </strong> The same string, but encrypted.
+    <strong>Output:</strong> The same message <span translate="no">(str{% if is_js %}ing{% endif %})</span>, but encrypted.
 </p>
 
 
 <!-- Put some usage examples -->
 <div class="for_info_only">
 <p>
-<strong>Example:</strong>
+<strong>Examples:</strong>
 </p>
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
@@ -32,13 +30,15 @@
 <!-- Here you can explain how it can be used in development and what is usage of this. -->
 <!-- The section is optional -->
 <p class="for_info_only">
-    <strong>How it is used: </strong>
+    <strong>How it is used:</strong>
     For cryptography and spy work.
 </p>
 
 <!-- Here you can explain some constraints for input-->
 <!-- The section is optional -->
-<p><strong>Precondition</strong>:<br>
-    0 < len(text) < 50<br>
-    Only English letters (in uppercase and lowercase), numbers and whitespaces.
+<p><strong>Preconditions:</strong>
+    <ul>
+        <li>0 < len(text) < 50;</li>
+        <li>Only English letters (in uppercase and lowercase), numbers and white spaces.</li>
+    </ul>
 </p>

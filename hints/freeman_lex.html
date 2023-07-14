@@ -4,9 +4,9 @@
         I have no idea how to start solving this mission.
     </div>
     <div class="answer">
-        In solution I want to show you, you should move over the string and take
-        equivalent character combination from the MORSE dictionary for each character.
-        Then join all these combinations together and return it.       
+        <p>
+            Catch an idea 💡! In solution I want to show you, you should move over the string and take equivalent character combination from the MORSE dictionary for each character. Then join all these combinations together and return it.
+        </p>
     </div>
 </div>
 <div class="question-answer">
@@ -14,15 +14,18 @@
         What instrument should I start from?
     </div>
     <div class="answer">
-        Since all letter in MORSE are lowercase, you should make your
+        <p>
+            Since all letter in MORSE are lowercase, you should make your
         text lowercase as well. Do it with <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">lower()</a> string method:
-<br />
-<br />
+        </p>
         <pre class="brush: python">
 text = "Hello"
-text.lower()
->>> "hello"
+print(text.lower())
         </pre>
+        <div class="output">
+            <p>Output:</p>
+            <pre>"hello"</pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -30,10 +33,9 @@ text.lower()
         This step is clear, but I stuck with the next and need a hint.
     </div>
     <div class="answer">
-        Then you should create <a target="_blank" href="https://wiki.python.org/moin/Generators">generator expression</a>
-        to perform an operation with each character in modified text: 
-<br />
-<br />
+        <p>
+            Then you should create <a target="_blank" href="https://wiki.python.org/moin/Generators">generator expression</a> to perform an operation with each character in modified text: 
+        </p>        
         <pre class="brush: python">
 (... for c in text.lower())
         </pre>
@@ -44,14 +46,9 @@ text.lower()
         Ok, but I don't understand what operation should it be.
     </div>
     <div class="answer">
-        Since MORSE is a <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries.asp">dictionary</a>,
-        use its <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries_access.asp">get()</a> method
-        with two parameters. The first is "c" from generator expression, because
-        you want to receive value (combination of characters) for "c" key. The
-        second parameter (default value in case of key absence in dictionary)
-        use whitespace. Its a tricky moment I explain you next step.
-<br />
-<br />
+        <p>
+            Since MORSE is a <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries.asp">dictionary</a>, use its <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries_access.asp">get()</a> method with two parameters. The first is "c" from generator expression, because you want to receive value (combination of characters) for "c" key. The second parameter (default value in case of key absence in dictionary) use whitespace. Its a tricky moment I explain you next step.
+        </p>
         <pre class="brush: python">
 (MORSE.get(c, ' ') for c in text.lower())
         </pre>
@@ -62,12 +59,9 @@ text.lower()
         I have generator expression, but I need string. Help to get it!
     </div>
     <div class="answer">
-        Generator expression is an Iterable and usually serves as a parameter
-        for some function. MORSE keys and values are strings, so you need no
-        additional transformation. You may use string method <a target="_blank" href="https://www.w3schools.com/python/ref_string_join.asp">join()</a>
-        to merge all characters into one string.
-<br />
-<br />
+        <p>
+            Generator expression is an Iterable and usually serves as a parameter for some function. MORSE keys and values are strings, so you need no additional transformation. You may use string method <a target="_blank" href="https://www.w3schools.com/python/ref_string_join.asp">join()</a> to merge all characters into one string.
+        </p>
         <pre class="brush: python">
 separator.join(MORSE.get(c, ' ') for c in text.lower())
         </pre>
@@ -79,17 +73,9 @@ separator.join(MORSE.get(c, ' ') for c in text.lower())
         string?
     </div>
     <div class="answer">
-        You need to have 3 whitespace between words and 1 whitespace between
-        characters in a word. So use 1 whitespace (" ") as separator, it
-        gives you one whitespace between all characters. And here is the trick I
-        promised you. In original text the word separator is 1 whitespace.
-        Since there are no such key in MORSE, it takes default value - 1 whitespace
-        instead. In your final string you use 1 whitespace as separator between
-        all characters. So 1 whitespace separator + 1 whitespace as "character" +
-        again 1 whitespace separator gives you desirable 3 whitespaces as a separator
-        between words in final string! 
-<br />
-<br />
+        <p>
+            You need to have 3 whitespace between words and 1 whitespace between characters in a word. So use 1 whitespace (" ") as separator, it gives you one whitespace between all characters. And here is the trick I promised you. In original text the word separator is 1 whitespace. Since there are no such key in MORSE, it takes default value - 1 whitespace instead. In your final string you use 1 whitespace as separator between all characters. So 1 whitespace separator + 1 whitespace as "character" + again 1 whitespace separator gives you desirable 3 white spaces as a separator between words in final string! 
+        </p>
         <pre class="brush: python">
 " ".join(MORSE.get(c, ' ') for c in text.lower())
         </pre>
@@ -100,42 +86,46 @@ separator.join(MORSE.get(c, ' ') for c in text.lower())
         That is cool! But how the final solution should looks like?
     </div>
     <div class="answer">
-        Actually, that almost all. You just need to add function definition:
-<br />
-<br />
+        <p>
+            Actually, that almost all. You just need to add function definition:
+        </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def morse_encoder(text: str) -> str:
 
     return ' '.join(MORSE.get(c, ' ') for c in text.lower())
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
         Show me more solutions!<br />
-        'Cause I wanna be a real Python Ninnjaa!
+        'Cause I wanna be a real Python 🥇 Ninnjaa!
     </div>
     <div class="answer">
-        Sure, grab it!
-    <br />
-    <br />
+        <p>Sure, grab it!</p>
+        <p>
+            The hints solution is brilliant, but you can make it even more compact, using lambda expression.
+        </p>
+        <div class="spoiler">
         <pre class="brush: python">
 morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ')
                                       for c in text.lower())        
         </pre>
-        The hints solution is brilliant, but you can make it even more compact, 
-        using lambda expression.
-        <br />
-        <br />
+        </div>
+        <p>
+            If your previously add whitespace key-value pair into MORSE, you don't need of default whitespace value inside get(). Besides you may use map() function which implement some function to each element of Iterable
+        </p>
+        <div class="spoiler">
         <pre class="brush: python">
 morse_encoder = lambda text: ' '.join(map(MORSE.get, text.lower()))    
-        </pre>  
-        If your previously add whitespace key-value pair into MORSE, you don't
-        need of default whitespace value inside get()). Besides you
-        may use map() function which implement some function to each element
-        of Iterable)
-        <br />
-        <br />
+        </pre>
+        </div>
+        <p>
+            Bigger one with additional function, splitting the input text by words first, then taking characters from MORSE for each letter in a word, joining them in a new word with 1 whitespace separator, and finally joining all new words with 3 white spaces.
+        </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def morse_encoder(text: str) -> str:
 
@@ -148,14 +138,11 @@ def morse_encoder(text: str) -> str:
 
     return text1    
         </pre>
-        Bigger one with additional function, splitting the input text by words
-        first, then taking characters from MORSE for each letter in a word, 
-        joining them in a new word with 1 whitespace separator, and finally
-        joining all new words with 3 whitespaces.
-        <br />
-        <br />
-        Click on "Best solutions" at mission menu and you find much more
+        </div>
+        <p>
+            Click on <b>Best solutions</b> at mission menu and you find much more
         solutions for this mission!
+        </p>
     </div>
 </div>
 <div class="question-answer">
@@ -163,7 +150,7 @@ def morse_encoder(text: str) -> str:
         Thanks! I know and understand more now! Everything works fine!
     </div>
     <div class="answer">
-        Glad to hear it!
+        Glad to hear it 👍!
     </div>
 </div>
 </body>
