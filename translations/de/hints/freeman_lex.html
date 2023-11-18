@@ -1,0 +1,156 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        <p>
+            Fangen Sie eine Idee 💡! In der Lösung, die ich Ihnen zeigen möchte, sollten Sie über die Zeichenkette gehen und für jedes Zeichen eine entsprechende Zeichenkombination aus dem MORSE-Wörterbuch nehmen. Dann fügen Sie alle diese Kombinationen zusammen und geben sie zurück.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Von welchem Instrument soll ich ausgehen?
+    </div>
+    <div class="answer">
+        <p>
+            Da alle Buchstaben in MORSE klein geschrieben sind, sollten Sie Ihren
+        text ebenfalls klein schreiben. Verwenden Sie dazu die Methode <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">lower()</a> string:
+        </p>
+        <pre class="brush: python">
+text = "Hello"
+print(text.lower())
+        </pre>
+        <div class="output">
+            <p>Ausgabe:</p>
+            <pre>"hello"</pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dieser Schritt ist klar, aber ich bin beim nächsten Schritt hängen geblieben und brauche einen Tipp.
+    </div>
+    <div class="answer">
+        <p>
+            Dann sollten Sie <a target="_blank" href="https://wiki.python.org/moin/Generators">generator expression</a> erstellen, um eine Operation mit jedem Zeichen im geänderten Text durchzuführen: 
+        </p>        
+        <pre class="brush: python">
+(... for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, aber ich verstehe nicht, welche Operation das sein soll.
+    </div>
+    <div class="answer">
+        <p>
+            Da MORSE ein <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries.asp">dictionary</a> ist, verwenden Sie seine Methode <a target="_blank" href="https://www.w3schools.com/python/python_dictionaries_access.asp">get()</a> mit zwei Parametern. Der erste ist "c" aus dem Generator-Ausdruck, denn Sie möchten den Wert (eine Kombination von Zeichen) für den Schlüssel "c" erhalten. Der zweite Parameter (Standardwert für den Fall, dass der Schlüssel nicht im Wörterbuch enthalten ist) ist ein Leerzeichen. Das ist ein kniffliger Moment, den ich Ihnen im nächsten Schritt erkläre.
+        </p>
+        <pre class="brush: python">
+(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ich habe einen Generator-Ausdruck, aber ich brauche einen String. Helfen Sie mir, ihn zu bekommen!
+    </div>
+    <div class="answer">
+        <p>
+            Generatorausdruck ist ein Iterable und dient normalerweise als Parameter für eine Funktion. MORSE-Schlüssel und -Werte sind Strings, so dass Sie keine zusätzliche Umwandlung benötigen. Sie können die String-Methode <a target="_blank" href="https://www.w3schools.com/python/ref_string_join.asp">join()</a> verwenden, um alle Zeichen zu einem String zusammenzufassen.
+        </p>
+        <pre class="brush: python">
+separator.join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie erhalte ich den erforderlichen Abstand zwischen Wörtern und Zeichen in der endgültigen
+        zeichenfolge?
+    </div>
+    <div class="answer">
+        <p>
+            Sie benötigen 3 Leerzeichen zwischen den Wörtern und 1 Leerzeichen zwischen den Zeichen eines Wortes. Verwenden Sie also 1 Leerzeichen (" ") als Trennzeichen, damit Sie ein Leerzeichen zwischen allen Zeichen haben. Und hier ist der Trick, den ich Ihnen versprochen habe. Im Originaltext ist das Worttrennzeichen 1 Whitespace (Leerzeichen). Da es in MORSE keinen solchen Schlüssel gibt, nimmt es stattdessen den Standardwert - 1 Leerzeichen. In Ihrer endgültigen Zeichenfolge verwenden Sie 1 Leerzeichen als Trennzeichen zwischen allen Zeichen. Also 1 Leerzeichen als Trennzeichen + 1 Leerzeichen als "Zeichen" + wieder 1 Leerzeichen als Trennzeichen ergibt die gewünschten 3 Leerzeichen als Trennzeichen zwischen den Wörtern in der endgültigen Zeichenfolge! 
+        </p>
+        <pre class="brush: python">
+" ".join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Das ist gut! Aber wie sollte die endgültige Lösung aussehen?
+    </div>
+    <div class="answer">
+        <p>
+            Eigentlich ist das schon fast alles. Sie müssen nur noch eine Funktionsdefinition hinzufügen:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def morse_encoder(text: str) -> str:
+
+    return ' '.join(MORSE.get(c, ' ') for c in text.lower())
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Zeigen Sie mir mehr Lösungen!<br />
+        denn ich will ein echter Python sein 🥇 Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Klar, schnapp sie dir!</p>
+        <p>
+            Die Lösung mit den Hinweisen ist brillant, aber Sie können sie noch kompakter machen, indem Sie einen Lambda-Ausdruck verwenden.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+morse_encoder = lambda text: ' '.join(MORSE.get(c, ' ')
+                                      for c in text.lower())        
+        </pre>
+        </div>
+        <p>
+            Wenn Sie zuvor ein Schlüssel-Wert-Paar mit Leerzeichen in MORSE eingefügt haben, brauchen Sie keinen Standardwert mit Leerzeichen in get(). Außerdem können Sie die Funktion map() verwenden, die für jedes Element von Iterable eine Funktion implementiert
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+morse_encoder = lambda text: ' '.join(map(MORSE.get, text.lower()))    
+        </pre>
+        </div>
+        <p>
+            Größere Funktion mit zusätzlicher Funktion, die den Eingabetext zuerst nach Wörtern aufteilt, dann für jeden Buchstaben in einem Wort Zeichen aus MORSE entnimmt, sie in einem neuen Wort mit 1 Leerzeichen-Trennzeichen zusammenfügt und schließlich alle neuen Wörter mit 3 Leerzeichen zusammenfügt.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def morse_encoder(text: str) -> str:
+
+    def trans(word):
+        
+        return ' '.join(map(lambda char: MORSE[char], word))
+
+    words = text.lower().split()
+    text1 = '   '.join(map(trans, words))
+
+    return text1    
+        </pre>
+        </div>
+        <p>
+            Klicken Sie im Missionsmenü auf <b>Best Solutions</b> und Sie finden viele weitere
+        lösungen für diese Mission!
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Danke! Ich weiß und verstehe jetzt mehr! Alles funktioniert bestens!
+    </div>
+    <div class="answer">
+        Freut mich zu hören 👍!
+    </div>
+</div>
+</body>
