@@ -1,0 +1,44 @@
+<!-- Describe task in general -->
+
+<p>
+    Ihre Aufgabe ist es, die Textnachricht mit <a target="_blank" href='https://en.wikipedia.org/wiki/Morse_code'>Morse code</a> zu verschlüsseln. Der eingegebene Text besteht aus Buchstaben (in Groß- und Kleinbuchstaben), Zahlen und Leerzeichen. Es werden keine Sonderzeichen ('&amp;', '?', '#' usw.) verwendet<br>
+    Sie müssen 3 Leerzeichen zwischen den Wörtern und 1 Leerzeichen zwischen den einzelnen Buchstaben eines jeden Wortes verwenden.
+</p>
+
+<p style="text-align: center;">
+    <img  title="Morse encoder" src="{{MEDIA}}example.jpg" alt="example" style="max-height: 283px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> Die geheime Nachricht <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Die gleiche Nachricht <span>(str{% if is_js %}ing{% endif %})</span>, aber verschlüsselt.
+</p>
+
+
+<!-- Put some usage examples -->
+<div class="for_info_only">
+<p>
+<strong>Beispiele:</strong>
+</p>
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<!-- Here you can explain how it can be used in development and what is usage of this. -->
+<!-- The section is optional -->
+<p class="for_info_only">
+   <strong>Wie es verwendet wird:</strong>
+    Für Kryptographie und Spionagearbeit.
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p><strong>Vorbedingungen:</strong>
+    <ul>
+        <li>0 &lt; len(Text) &lt; 50;</li>
+        <li>Nur englische Buchstaben (in Groß- und Kleinbuchstaben), Zahlen und Leerzeichen.</li>
+    </ul>
+</p>
